@@ -28,3 +28,11 @@ python3 -m unittest discover -s tests -v
 ## 尚未執行的進階工作
 
 沒有下載/訓練完整 Transformer 語言模型、沒有實際 GPU kernel benchmark、沒有部署推論服務或驗證多卡通訊。第 24 課 C 部分提供的是實測作業，需另外指定自己的模型與端點。
+
+## 2026-09-28：共同設計增量驗證
+
+新增 `tests/test_codesign.py` 的 6 個 Python 測試；加上既有 12 個，共 **18 個測試全部通過**。新增檢查涵蓋 65,536 個 INT8 operand 配對、INT32 wrap、signed requant、算術右移與飽和、enable/reset、不同 shape 的 mesh 結果與獨立 INT64 matmul、有效 MAC 數守恆。
+
+已執行 `python3 -m codesign.baseline --size 8 --rows 8`：得到 512 個有效 MAC、30 個教學模型 cycles、26.67% PE-cycle slot 利用率，整數輸出與 reference 相同。這不含 NanoNPU 整機控制、SRAM/UART 或任何實際頻率，不能當作它的效能數字。
+
+`codesign/rtl/ws_pe.sv` 與 `tb_ws_pe.sv` 為新寫的 reference RTL/testbench。本環境沒有 Icarus Verilog、Verilator 或 Yosys，未執行 RTL compile/simulation/synthesis；不將 Python pass 宣稱為 RTL pass。NanoNPU 只完成 pinned source inspection。

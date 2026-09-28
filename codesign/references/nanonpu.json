@@ -1,0 +1,81 @@
+{
+  "role": "reference_only",
+  "required_build_dependency": false,
+  "repository": "https://github.com/rightson/nanoNPU",
+  "branch_at_review": "dev",
+  "commit": "f876e8e236aed42e3ca4627ca8e43f8d44f1a086",
+  "reviewed_on": "2026-09-28",
+  "scope": "source inspection, not verified RTL or silicon",
+  "files": [
+    {
+      "path": "README.md",
+      "git_blob_sha": "df70f14ac1bc3ec545f26e18c29793fc032472fa",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/README.md"
+    },
+    {
+      "path": "RTL/Systolic Array/PE.sv",
+      "git_blob_sha": "cf196858b8155ec77b651603e75ec935c11a4648",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/RTL/Systolic%20Array/PE.sv"
+    },
+    {
+      "path": "RTL/Systolic Array/SA_NxN.sv",
+      "git_blob_sha": "00a13e6abaa16069c5f393d6d4e3ca22154e76fb",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/RTL/Systolic%20Array/SA_NxN.sv"
+    },
+    {
+      "path": "RTL/Systolic Array/SA_NxN_top.sv",
+      "git_blob_sha": "cb8c8c1d674a36bc0f382ea43154cf3cc6059326",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/RTL/Systolic%20Array/SA_NxN_top.sv"
+    },
+    {
+      "path": "RTL/Systolic Array/SA_CU.sv",
+      "git_blob_sha": "a80757c41a0c29e6506aecc9625c560ab940706a",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/RTL/Systolic%20Array/SA_CU.sv"
+    },
+    {
+      "path": "RTL/Req/Req.sv",
+      "git_blob_sha": "fe5669198ef1455126dd936a2f667045484a33ce",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/RTL/Req/Req.sv"
+    },
+    {
+      "path": "RTL/npu_top.sv",
+      "git_blob_sha": "2db6f323a8504b856144fe637362bc5307e18664",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/RTL/npu_top.sv"
+    },
+    {
+      "path": "Backend/openlane/RTL/PE.sv",
+      "git_blob_sha": "cf196858b8155ec77b651603e75ec935c11a4648",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/Backend/openlane/RTL/PE.sv"
+    },
+    {
+      "path": "Backend/openlane/RTL/Req.sv",
+      "git_blob_sha": "d2c1247329c59d136497a8042bcb4f5d941014a8",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/Backend/openlane/RTL/Req.sv"
+    },
+    {
+      "path": "Backend/openlane/RTL/CU.SV",
+      "git_blob_sha": "df1cba4c95f807508967b9cb5bcb9bb369d86fa7",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/Backend/openlane/RTL/CU.SV"
+    },
+    {
+      "path": "Backend/openlane/RTL/npu_top.sv",
+      "git_blob_sha": "94768ff192cb27b99359bbe6e2a975a2978b2e53",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/Backend/openlane/RTL/npu_top.sv"
+    },
+    {
+      "path": "Backend/openlane/RTL/npu_system_top.sv",
+      "git_blob_sha": "9cb31628803a9329f846ac8dca368ed00b8df2dd",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/Backend/openlane/RTL/npu_system_top.sv"
+    },
+    {
+      "path": "Backend/openlane/RTL/npu_project_macro.sv",
+      "git_blob_sha": "30c83fc0f607a3de36776ea8b198e4fccc64286a",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/Backend/openlane/RTL/npu_project_macro.sv"
+    },
+    {
+      "path": "Backend/openlane/config.json",
+      "git_blob_sha": "c473dccc7142af4e24479aac3508d56bb21d1b4f",
+      "url": "https://github.com/rightson/nanoNPU/blob/f876e8e236aed42e3ca4627ca8e43f8d44f1a086/Backend/openlane/config.json"
+    }
+  ]
+}
