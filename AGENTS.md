@@ -1,5 +1,12 @@
 # Project direction
 
+Organize the public curriculum and README around three connected layers:
+1. Understand detailed LLM architecture, training steps and inference steps.
+2. Implement those algorithms as readable, trainable and testable programs.
+3. Deploy the same model onto our NPU and verify correctness and acceleration.
+The A-H stages and C01-C40 units are subdivisions of these layers. NPU deployment
+includes lowering, runtime, data loading, execution and readback, not only RTL blocks.
+
 The primary purpose of llm-lab is deep, testable intuition about LLMs: representation,
 learning, context use, generation, and execution cost. Code and hardware experiments
 exist to strengthen that understanding. Preserve the complete algorithm-to-RTL path,
