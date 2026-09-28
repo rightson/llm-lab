@@ -1,8 +1,8 @@
-# 共同設計課程路線：由原理一直追到 RTL 與實體限制
+# 硬體深入路線：由 LLM 運算追到 RTL 與實體限制
 
-**狀態：01–24 課已完成；下列 25–72 為延伸課程規劃，尚未全部撰寫或實作。** 第一個跨層實驗 CD01 已放在 [codesign](../codesign/README.md)，可先把數學、整數與時序連起來。
+**狀態：01–24 已有入門短講；下列 25–72 是先前規劃的硬體主題 ID，保留供交叉引用，尚未全部撰寫或實作。** 總體學習順序以 [LLM 理解主線 C01–C40](learning-plan.md) 為準，不能把這張表當成必須依序接在 24 課之後的課程。 第一個跨層實驗 CD01 已放在 [codesign](../codesign/README.md)，可先把數學、整數與時序連起來。
 
-原 24 課保留作為 LLM 基礎。後續採交錯學習，不必讀完所有軟體課才碰硬體。例如第 04 課矩陣乘法接 CD01 的小型 PE/mesh，再回到第 06–10 課看同一個 GEMM 出現在 QKV、FFN 與 head 的哪裡。
+原 24 課保留作為 LLM 基礎材料。可在第 04 課做 CD01 的小型 PE 預覽，但深入硬體前先完成可訓練模型與泛化評估；再讓同一模型的 QKV、FFN、head 張量決定這裡的設計任務。下面各主題必須指出它解釋哪個 LLM 運算與成本問題。
 
 ## 編號與學習順序
 
@@ -15,7 +15,7 @@
 | Transformer 非線性 | 49 reduction/max/sum；50 exp LUT 或近似多項式；51 softmax normalization；52 LayerNorm/RMSNorm/rsqrt；53 RoPE、GELU、SwiGLU；54 fusion 的 liveness 與精度 | 定義每算子誤差範圍、極值測試與回到模型後的品質影響 |
 | Attention 與生成 | 55 QKV/GQA layout；56 online-softmax/block attention；57 KV append/read/容量；58 prefill 排程；59 decode GEMV 與權重重用；60 mixed precision/INT4 與品質 | 小型 attention block 功能對齊；prefill 與 decode 分別有成本模型 |
 | RTL 到實體 | 61 synthesis 與面積來源；62 SDC、setup/hold 與 pipeline；63 SRAM macro 與 floorplan；64 placement/CTS/routing；65 activity、clock gating 與功耗估計；66 PPA 設計空間搜尋 | 固定 library/corner/constraints，重現至少兩個方案並區分估計與量測 |
-| 模型到端到端系統 | 67 小型模型訓練與評估資料；68 PTQ/QAT 與精度分配；69 整圖編譯與 host 分工；70 UART/APB/DMA 等傳輸選擇；71 regression/performance counters；72 端到端生成與架構報告 | 能生成可評估的文本，列出品質、TTFT、TPOT、bytes/token、area/timing 與未完成限制 |
+| 模型到端到端系統 | 67 已訓練模型與評估資料的硬體整合基準；68 PTQ/QAT 與精度分配；69 整圖編譯與 host 分工；70 UART/APB/DMA 等傳輸選擇；71 regression/performance counters；72 端到端生成與架構報告 | 能生成可評估的文本，列出品質、TTFT、TPOT、bytes/token、area/timing 與未完成限制 |
 
 ## 建議交錯路線
 
@@ -30,9 +30,10 @@
 
 這樣每輪都會經歷「公式 → 數值 → 記憶體 → 硬體 → 證據」，而非先背完軟體名詞再背一套 RTL 名詞。
 
-## 分階段里程碑
+## 硬體分階段里程碑（模型學習先備見主線）
 
 - M0，已建立：獨立主線、reference audit、INT8 PE 數值模型、mesh 教學時序模型、原創 PE RTL/testbench。Python 已驗證；RTL 執行尚待工具環境。
+- 前置 gate：先依主線完成受控資料、baseline、可訓練模型、held-out 評估與 workload trace。模型訓練不再延後到本表第 67 項。
 - M1：完整 GEMM tile engine 與 RTL regression，包括停頓、尾塊和跨 K tile 累加；決定初版資料流。
 - M2：受 SRAM/介面約束的 command engine、compiler lowering 與 host runtime。
 - M3：Transformer linear ops 可卸載，非線性明確由 host 執行，量測傳輸成本。

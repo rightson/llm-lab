@@ -1,6 +1,8 @@
 # LLM Lab：以工作負載驅動的演算法與 NPU 共同設計
 
-本專案的目標，是讓讀者能從一個 LLM 運算需求，推導數值格式、資料流、記憶體、指令與 RTL，最後用正確性、延遲、流量及實體設計結果修正原本的選擇。
+本專案總目標是深刻理解 LLM，完整學習順序以 [學習規劃](learning-plan.md) 為準。本文件只定義共同設計深入路線：在理解表示、學習、attention 與生成後，從同一個模型的運算需求推導數值格式、資料流、記憶體、指令與 RTL，再將正確性與成本結果回饋到模型。
+
+小模型訓練與 held-out 評估是這條路線的前置基礎；不延到硬體完成後才補。先完成 LLM 理解主線的讀者可以暫停在那裡；想走完整共同設計路線者，保留 Python 驅動自有 RTL 的終點，不需要 tape-out。
 
 **llm-lab 是唯一主線。NanoNPU 是可讀取、可比較的參考實作，不是本專案的規格、編譯目標或架構上限。** 不要求複製其 ISA、UART/APB、array size、CNN pipeline 或製程。實驗預設不需 clone/build NanoNPU；不將它設為 submodule。
 
@@ -8,7 +10,7 @@
 
 同一個線性層 Y=XW，prefill 的 X 有許多列，單序列 decode 的 X 通常只有一列。兩者雖共享權重與數學公式，在陣列填充、權重重用與頻寬上卻可能有不同需求。因此先問「工作負載的 shape 與資料重用是什麼」，再決定是否需要更多乘法器。
 
-每一轮設計都沿著這個閉環：
+每一輪設計都沿著這個閉環：
 
 ```mermaid
 flowchart TD
@@ -50,7 +52,7 @@ flowchart TD
 7. 物理階段再加入 area、clock constraints、STA 與有條件的 power estimate。
 8. 設計結論：保留/放棄哪個方案，以及下一個實驗。
 
-每次只要求本階段能實際產生的證據，但未完成欄位必須明列。Python 自洽測試不等於 RTL 等價，RTL simulation 不等於 synthesis，synthesis area 不等於 post-route PPA；没有 activity/library 的功耗不能寫成量測值。
+每次只要求本階段能實際產生的證據，但未完成欄位必須明列。Python 自洽測試不等於 RTL 等價，RTL simulation 不等於 synthesis，synthesis area 不等於 post-route PPA；沒有 activity/library 的功耗不能寫成量測值。
 
 ## Reference 的使用方式
 
